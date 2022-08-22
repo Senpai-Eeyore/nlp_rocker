@@ -1,8 +1,9 @@
 FROM rocker/ml-verse
 
-LABEL maintainer="Keenan Smith <keenan.t.smith.1@gmail.com>"
+LABEL org.opencontainers.image.maintainer="Keenan Smith <keenan.t.smith.1@gmail.com>"
 
 ENV PASSWORD=password
+ENV ROOT=TRUE
 
 # Installing the Packages I like to use
 RUN install2.r --skipmissing --deps TRUE --skipinstalled -n 6 \
@@ -16,7 +17,10 @@ RUN install2.r --skipmissing --deps TRUE --skipinstalled -n 6 \
       future \
       furrr \
       here \
-      quarto
+      quarto \
+      wordcloud \
+      wordcloud2 \
+      RColorBrewer
 
 # Install miniconda
 ENV CONDA_DIR /opt/conda
